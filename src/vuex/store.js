@@ -1,18 +1,12 @@
 import { createStore } from 'vuex'
+import createPersistedState from "vuex-persistedstate";
+import auth from './modules/auth'
 
 const store = createStore({
-  state () {
-    return {
-      userProfile: {
-        name: 'alabama'
-      },
-    }
+  modules: {
+    auth
   },
-  mutations: {
-    updateUserProfile (state, newProfile) {
-        state.userProfile  = newProfile
-    }
-  }
+  plugins: [createPersistedState()]
 })
 
 export default store;
